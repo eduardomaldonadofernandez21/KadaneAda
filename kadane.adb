@@ -1,7 +1,7 @@
 with Ada.Text_IO; use Ada.Text_IO;
 
 package body Kadane is
-   --Funci�n para medir el tiempo ejecutado del algoritmo
+   --Función para medir el tiempo ejecutado del algoritmo
    function ExecutionTime(A : Int_array) return Time_Span is
       Start_Time, Stop_Time : Time;
       ElapsedTime : Time_Span;
@@ -24,24 +24,23 @@ package body Kadane is
          maxEndingHere := Integer'Max(maxEndingHere,0);
          maxSoFar := Integer'Max(maxSoFar,maxEndingHere);
       end loop;
-      delay 0.8;
       return maxSoFar;
    end AlgKadane;
 
-   --Funci�n para leer el tama�o del array para crear dicho array de ese tama�o
+   --Función para leer el tamaño del array para crear dicho array de ese tamaño
    function ReadSize(File : String) return Int_array is
       F : File_Type;
       size : Integer;
    begin
       Open(F, In_File, File);
       size := Integer'Value (Get_Line(F));
-      Put_Line(Integer'Image(size));
-      Put_Line("-------------------");
+      --Put_Line(Integer'Image(size));
+      --Put_Line("-------------------");
       Close (F);
       return ReadArray(File,size);
    end ReadSize;
 
-
+   --Función auxiliar para crear el Array que se le pasará al algoritmo
    function ReadArray(File : String; N : Integer) return Int_array is
       res : Int_array (0..N);
       cont : Natural := 0;
@@ -56,4 +55,15 @@ package body Kadane is
       return res;
    end ReadArray;
 
+   function SizeArray(File : String) return Integer is
+      size : Integer;
+      F : File_Type;
+   begin
+      Open(F, In_File, File);
+      size := Integer'Value (Get_Line(F));
+      Close(F);
+      return size;
+   end SizeArray;
+
 end Kadane;
+
