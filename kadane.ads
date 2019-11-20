@@ -9,5 +9,6 @@ package Kadane is
    function AlgKadane(A : Int_array) return Integer;
    function ReadSize(File : String) return Int_array;
    function ReadArray(File : String; N : Integer) return Int_array;
+   function SizeArray(File : String) return Integer;
 
 end Kadane;
